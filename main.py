@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 from pprint import pprint
 request = requests.get("https://kworb.net/spotify/artist/7hJcb9fa4alzcOq3EaNPoG_songs.html").text
-
+name_of_the_artist = soup.select("span.pagetitle")[0].text.split("-")[0]
 soup = BeautifulSoup(request, "html.parser")
 
 total = 0
@@ -15,4 +15,4 @@ for n in range(194):
         pass
     finally:
         total += one_int
-print(f"This artist gets {total} streams per day.")
+print(f"{name_of_the_artist} gets {total} streams per day.")
